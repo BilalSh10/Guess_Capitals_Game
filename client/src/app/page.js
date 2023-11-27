@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {  
     console.log(itemList);
     let getData = async () => {
-      let itemsData = await axios.get('http://localhost:3001/items');
+      let itemsData = await axios.get('https://todo-list-website-12qa.vercel.app/items');
       setItemList(itemsData.data);
     }
     getData();
@@ -22,7 +22,7 @@ export default function Home() {
   let createItem = async () => {
     if(itemText.length !== 0) {
       try{
-        await axios.post('http://localhost:3001/item', {newItem: itemText});
+        await axios.post('https://todo-list-website-12qa.vercel.app/item', {newItem: itemText});
         setWhenToRefresh(!whenToRefresh);
       }catch(err){
         console.log("Error in Creating an item", err);
@@ -37,7 +37,7 @@ export default function Home() {
   const handleCheckboxChange = async (e) => {
     let id = e.target.id;
     try{
-      await axios.delete(`http://localhost:3001/item/${id}`);
+      await axios.delete(`https://todo-list-website-12qa.vercel.app/item/${id}`);
       setWhenToRefresh(!whenToRefresh);
     }catch(err){
       console.log("Client Error in Deleting an item", err);
